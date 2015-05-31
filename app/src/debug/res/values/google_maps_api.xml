@@ -1,0 +1,18 @@
+<resources>
+    <!--
+    TODO: Before you run your application, you need a Google Maps API key.
+
+    To get one, follow this link, follow the directions and press "Create" at the end:
+
+https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=85:1E:DB:FB:91:E5:B0:76:49:A4:6B:E9:2D:97:B4:DC:D8:7B:27:AF%3Bapp.demo.adapter.autocompletetextview.googlemapsclustermarkers
+
+    You can also add your credentials to an existing key, using this line:
+    85:1E:DB:FB:91:E5:B0:76:49:A4:6B:E9:2D:97:B4:DC:D8:7B:27:AF;app.demo.adapter.autocompletetextview.googlemapsclustermarkers
+
+    Once you have your key (it starts with "AIza"), replace the "google_maps_key"
+    string in this file.
+    -->
+    <string name="google_maps_key" translatable="false" templateMergeStrategy="preserve">
+        AIzaSyBfHL1AoS-qwvbvO1p0SBlx_S8fMdKlCwo
+    </string>
+</resources>
