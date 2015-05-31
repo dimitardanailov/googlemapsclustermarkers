@@ -5,3 +5,15 @@
 .DS_Store
 /build
 /captures
+
+# I get idea to remove iml files from: https://gist.github.com/iainconnor/8605514
+# Command: git ls-files | grep '\.iml$' | xargs git rm
+*.iml
+
+# Remove vim temp files
+
+*~
+*.*~
+
+*.swp
+*.swo
