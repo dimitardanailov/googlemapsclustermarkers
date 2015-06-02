@@ -23,4 +23,6 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:22.1.1'
     compile 'com.google.android.gms:play-services-maps:7.5.0'
+
+    compile 'com.google.maps.android:android-maps-utils:0.3+'
 }
