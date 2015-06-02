@@ -110,6 +110,18 @@ We recommend that you add the following <uses-feature> element as a child of the
     android:required="true" />
 ```
 
+### Google Maps Android API utility library
+
+Link: http://googlemaps.github.io/android-maps-utils/
+
+Github: https://github.com/googlemaps/android-maps-utils
+
+```bash
+dependencies {
+    compile 'com.google.maps.android:android-maps-utils:{#versionNumber}'
+}
+```
+
 
 ### MacOSX Emulators
 
