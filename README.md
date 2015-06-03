@@ -122,6 +122,10 @@ dependencies {
 }
 ```
 
+### Google Maps Cluster Markers
+
+Documentation: https://developers.google.com/maps/documentation/android/utility/marker-clustering
+
 
 ### MacOSX Emulators
 

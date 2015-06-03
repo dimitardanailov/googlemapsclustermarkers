@@ -12,10 +12,12 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.maps.android.clustering.ClusterManager;
 
 import app.demo.adapter.autocompletetextview.googlemapsclustermarkers.R;
 import app.demo.adapter.autocompletetextview.googlemapsclustermarkers.fragments.BaseFragment;
 import app.demo.adapter.autocompletetextview.googlemapsclustermarkers.fragments.googleMaps.widgets.CustomGoogleMapFragment;
+import app.demo.adapter.autocompletetextview.googlemapsclustermarkers.googleMaps.clustering.AppClusterItem;
 
 /**
  * Created by Dimitar Danailov on 6/2/15.
@@ -64,10 +66,7 @@ public class ClusterMarkerMapFragment extends BaseFragment implements OnMapReady
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         setActivity();
 
-        Log.d(TAG, "Map is loaded");
-
         View view = inflater.inflate(R.layout.map_fragment, container, false);
-
         loadGoogleMapFragment();
 
         return view;
@@ -84,8 +83,6 @@ public class ClusterMarkerMapFragment extends BaseFragment implements OnMapReady
      * We loaded our {@link GoogleMap} via async listener. When everything is ready we go to setup our map.
      */
     private void loadGoogleMapFragment() {
-        Log.d(TAG, "Try to load Fragment");
-
         CustomGoogleMapFragment fragment = CustomGoogleMapFragment.loadFragment(this.getActivity(), R.id.google_map_container);
         fragment.getMapAsync(this);
     }
@@ -121,5 +118,52 @@ public class ClusterMarkerMapFragment extends BaseFragment implements OnMapReady
         // googleMap.setOnCameraChangeListener(getCameraChangeListener());
 
         /*** Listeners ***/
+
+        setUpClustering();
+    }
+
+    /**
+     * We use {@link ClusterManager} to make setup of google map to support cluster markers.
+     *
+     *
+     * Documentation: https://developers.google.com/maps/documentation/android/utility/marker-clustering
+     */
+    private void setUpClustering() {
+        // Declare a variable for the cluster manager.
+        ClusterManager<AppClusterItem> mClusterManager;
+
+        // Position the map in UK.
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(51.503186, -0.126446), DEFAULT_ZOOM_LEVEL));
+
+        // Initialize the manager with the context and the map.
+        mClusterManager = new ClusterManager<AppClusterItem>(this.getActivity(), googleMap);
+
+        // Point the map's listeners at the listeners implemented by the cluster manager.
+        googleMap.setOnCameraChangeListener(mClusterManager);
+        googleMap.setOnMarkerClickListener(mClusterManager);
+
+        // Add cluster items (markers) to the cluster manager.
+        addClusterMarkers(mClusterManager);
+    }
+
+    /**
+     * Add fake markers.
+     *
+     * @param mClusterManager
+     */
+    private void addClusterMarkers(ClusterManager<AppClusterItem> mClusterManager) {
+
+        // Set some lat/lng coordinates to start with.
+        double latitude = 51.5145160;
+        double longitude = -0.1270060;
+
+        // Add ten cluster items in close proximity, for purposes of this example.
+        for (int i = 0; i < 10; i++) {
+            double offset = i / 60d;
+            latitude = latitude + offset;
+            longitude = longitude + offset;
+            AppClusterItem offsetItem = new AppClusterItem(latitude, longitude);
+            mClusterManager.addItem(offsetItem);
+        }
     }
  }
