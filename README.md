@@ -1,5 +1,7 @@
 # Google Maps Cluster Markers
 
+[![IMAGE ALT TEXT](http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](http://www.youtube.com/watch?v=5ZnVraO1mT4 "Android - Cluster Markers ")
+
 ## Google Play Services [Google Play]
 
 Documentation:
